@@ -39,15 +39,35 @@ export const NavItem = styled.div`
     &.home{
         color:#ea6f5a;
     }
+    .langua{
+        font-size:20px;
+    }
+`
+export const NavSearchWrapper = styled.div`
+    position: relative;
+    float:left;
+    
+    // display:inline-block;
+    // background-color:rgba(236,97,73,.7);
+    .search{
+        position: absolute;
+        right: 5px;
+        width:30px;
+        // height:30px;
+        line-height:30px;
+        border-radius:15px;
+        text-align: center;
+        bottom: 13px;
+        background-color:#fff;
+    }
 
 `
-
 export const NavSearch = styled.input.attrs({
     placeholder:'搜索'
 })`
    width:160px;
    height:38px;
-   margin:9px 15px;
+   margin:9px 0px;
    border-radius:19px;
    border:none;
    outline:none;
@@ -85,5 +105,15 @@ export const NavRightItem = styled.div`
         background-color:rgba(236,97,73,.7);
         color:#fff;
     }
-
+    .penicon{
+        font-size:18px;
+        width:30px;
+        line-height:30px;
+        text-algin:center;
+        margin-right:5px;
+        font-weight:bold;
+       
+       
+    }
+   
 `
