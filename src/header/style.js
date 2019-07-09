@@ -18,15 +18,18 @@ export const NavLogl = styled.div`
     background-size: contain;
 `
 export const NaviMiddle = styled.div`
-    width:980px;
+    width:870px;
     height:100%;
     margin:0 auto;
-    // background-color:rgb(255,0,255);
+    padding-right:60px;
+    box-sizing:border-box;
+
+    //  background-color:rgb(255,0,255);
 `
 
 export const NavItem = styled.div`
     line-height:56px;
-    margin:0 15px;
+    margin:0 20px;
     font-size:17px;
     color:#333;
     &.left{
@@ -35,6 +38,7 @@ export const NavItem = styled.div`
     &.right{
         float:right;
         color:#969696;
+        // margin-right:30px;
     }
     &.home{
         color:#ea6f5a;
@@ -58,7 +62,12 @@ export const NavSearchWrapper = styled.div`
         border-radius:15px;
         text-align: center;
         bottom: 13px;
-        background-color:#fff;
+
+        &.focused{
+            background-color:#777;
+            color:#fff;
+        }
+     
     }
 
 `
@@ -72,14 +81,30 @@ export const NavSearch = styled.input.attrs({
    border:none;
    outline:none;
    background-color:#eee;
-   padding: 0 15px;
-   box-sizzing:border-box;
+   padding: 0 35px 0 15px;
+   box-sizing:border-box;
    font-size:14px;
+   color:#555;
 
    &::placeholder {
        color:#999;
 
    }
+   &.focused{
+       width:260px;
+   }
+   &.slide-enter {
+    transition: all .2s ease-out;
+    }
+    &.slide-enter-active {
+        width: 240px;
+    }
+    &.slide-exit {
+        transition: all .2s ease-out;
+    }
+    &.slide-exit-active {
+        width: 160px;
+    }
 
 `
 export const NavRight = styled.div`
