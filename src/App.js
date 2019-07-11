@@ -2,15 +2,19 @@ import React from 'react';
 import {GlobalStyle} from './style'
 import IconGlobalStyle from './iconfont/iconfont'
 import Header from './header'
+import {Provider} from 'react-redux'
+import store from './store'
 function App() {
   return (
- <React.Fragment>
-    <GlobalStyle  />
-    <IconGlobalStyle />
-    <Header>
+    <Provider store = {store}>
+      <React.Fragment>
+        <GlobalStyle  />
+        <IconGlobalStyle />
+        <Header />
 
-    </Header>
-  </React.Fragment>
+      
+      </React.Fragment>
+  </Provider>
   );
 }
 
