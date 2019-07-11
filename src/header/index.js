@@ -3,7 +3,8 @@ import { CSSTransition } from 'react-transition-group';
 
 import {HeaderWrapper,NavLogl,NaviMiddle,NavRight,NavItem,NavSearch,NavRightItem,NavSearchWrapper} from './style'
 import {connect} from 'react-redux';
-import {ActionCreators} from './store'
+import {ActionCreators} from './store';
+import {fromJS} from 'immutable';
 const Header = (props)=>{
     return(<HeaderWrapper>
                     <NavLogl  />
@@ -43,7 +44,7 @@ const Header = (props)=>{
 
 const mapStateToProps= (state)=>{
   return {
-    focused:state.header.focused,
+    focused:state.header.get('focused'),
   }
 }
 const mapDispatchToProps = (dispatch)=>{
