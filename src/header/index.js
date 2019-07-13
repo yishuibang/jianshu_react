@@ -1,10 +1,52 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import {HeaderWrapper,NavLogl,NaviMiddle,NavRight,NavItem,NavSearch,NavRightItem,NavSearchWrapper} from './style'
+import {HeaderWrapper,
+    NavLogl,
+    NaviMiddle,
+    NavRight,
+    NavItem,
+    NavSearch,
+    NavRightItem,
+    NavSearchWrapper,
+    HotSearch,
+    HotSearchHeader,
+    SearchSwitch,
+    HotSearchListItem,
+
+} from './style'
 import {connect} from 'react-redux';
 import {ActionCreators} from './store';
 import {fromJS} from 'immutable';
+const renderHotSearchList = (focused)=>{
+   return focused ? 
+     (
+           <HotSearch>
+                        {/*头部 热门搜索 换一换 */}
+                           <HotSearchHeader>
+                               热门搜索
+                               <SearchSwitch>
+                                   换一换
+                               </SearchSwitch>
+                               {/* 热门搜索列表 */}
+                           </HotSearchHeader> 
+                           <div>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                             <HotSearchListItem>教育</HotSearchListItem>
+                            </div>
+        </HotSearch>
+    )
+    :
+     null
+}
 const Header = (props)=>{
     return(<HeaderWrapper>
                     <NavLogl  />
@@ -27,8 +69,9 @@ const Header = (props)=>{
                                 onBlur = {props.onsearchBlur}
                                 />
                             </CSSTransition>
-                        
                         <i className={props.focused ? "iconfont search focused" : "iconfont search"}>&#xe60c;</i>
+                          {renderHotSearchList(props.focused )}
+                      
                         </NavSearchWrapper>
                     
                     </NaviMiddle>
@@ -44,7 +87,8 @@ const Header = (props)=>{
 
 const mapStateToProps= (state)=>{
   return {
-    focused:state.header.get('focused'),
+    // focused:state.get('header').get('focused'),
+    focused:state.getIn(['header','focused']),
   }
 }
 const mapDispatchToProps = (dispatch)=>{

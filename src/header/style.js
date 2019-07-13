@@ -61,7 +61,7 @@ export const NavSearchWrapper = styled.div`
         line-height:30px;
         border-radius:15px;
         text-align: center;
-        bottom: 13px;
+        top: 13px;
 
         &.focused{
             background-color:#777;
@@ -105,6 +105,35 @@ export const NavSearch = styled.input.attrs({
     &.slide-exit-active {
         width: 160px;
     }
+
+`
+export const HotSearch = styled.div`
+    position: absolute;
+    width:240px;
+    // height:100px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    padding:20px 20px 10px 20px;
+    color:#777;
+    font-size:14px;
+  
+`
+export const HotSearchHeader = styled.div`
+    font-size:14px;
+    margin:0 0 10px 0; //上右下左
+
+`
+export const SearchSwitch = styled.a`
+   float:right;
+   font-size:13px;
+`
+export const HotSearchListItem = styled.a`
+  display:inline-block;
+  padding:2px 5px 2px 5px;
+  margin:5px 10px  0 0;
+  border:0.5px solid #eee;
+  font-size:13px;
+
 
 `
 export const NavRight = styled.div`
