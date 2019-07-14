@@ -20,23 +20,35 @@ import {ActionCreators} from './store';
 import {fromJS} from 'immutable';
 class Header extends Component {
      renderHotSearchList() {
-        //  console.log(this.props.hotSearchList)
-        return this.props.focused ? 
-          (
-                <HotSearch>
+        const {hotSearchList,focused,mouseIn,page,totalPage,
+            handleMouseEnter,handleMouseLeave,switchSearchListData} = this.props
+            if(hotSearchList.length === 0) return
+           let pageList = []
+           for (let i = (page - 1) * 10; i < page * 10; i++) {
+               if(hotSearchList[i]) {
+               pageList.push(
+                 <HotSearchListItem key = {hotSearchList[i]}>{hotSearchList[i]}</HotSearchListItem>
+               )
+               }
+               
+           }
+
+          return (focused || mouseIn) ?  (
+                <HotSearch
+                onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
+                    >
                              {/*头部 热门搜索 换一换 */}
                                 <HotSearchHeader>
                                     热门搜索
-                                    <SearchSwitch>
+                                    <SearchSwitch onClick={()=>switchSearchListData(page,totalPage)}>
                                         换一换
                                     </SearchSwitch>
                                     {/* 热门搜索列表 */}
                                 </HotSearchHeader> 
                                 <div>
                                     {
-                                        this.props.hotSearchList && this.props.hotSearchList.map((item)=>{
-                                       return <HotSearchListItem key = {item}>{item}</HotSearchListItem>
-                                        })   
+                                    pageList   
                                     }
                                  </div>
              </HotSearch>
@@ -45,6 +57,7 @@ class Header extends Component {
           null
      }
     render(){
+        const {focused,onsearchFocus,onsearchBlur} = this.props;
         return(<HeaderWrapper>
             <NavLogl  />
             <NaviMiddle >
@@ -54,19 +67,19 @@ class Header extends Component {
                     <i className="iconfont langua">&#xe636;</i>
                 </NavItem>
                 <NavItem className = 'right'>登录</NavItem>
-                <NavSearchWrapper>
+                <NavSearchWrapper >
                     <CSSTransition
-                    in = {this.props.focused}
+                    in = {focused}
                     timeout = {200}
                     classNames = 'slide'
                     >
                             <NavSearch
-                        className = {this.props.focused ? 'focused' : ''}
-                        onFocus = {this.props.onsearchFocus}
-                        onBlur = {this.props.onsearchBlur}
+                        className = {focused ? 'focused' : ''}
+                        onFocus = {onsearchFocus}
+                        onBlur = {onsearchBlur}
                         />
                     </CSSTransition>
-                <i className={this.props.focused ? "iconfont search focused" : "iconfont search"}>&#xe60c;</i>
+                <i className={focused ? "iconfont search focused" : "iconfont search"}>&#xe60c;</i>
                   {this.renderHotSearchList()}
               
                 </NavSearchWrapper>
@@ -91,6 +104,9 @@ const mapStateToProps= (state)=>{
     // focused:state.get('header').get('focused'),
     focused:state.getIn(['header','focused']),
     hotSearchList:state.getIn(['header','hotSearchList']),
+    mouseIn:state.getIn(['header','mouseIn']),
+    page:state.getIn(['header','page']),
+    totalPage:state.getIn(['header','totalPage']),
   }
 }
 const mapDispatchToProps = (dispatch)=>{
@@ -103,6 +119,25 @@ return {
     onsearchBlur(){
         dispatch(ActionCreators.searchBlur());
     },
+
+    handleMouseEnter() {
+        dispatch(ActionCreators.mouseEnter());
+    },
+
+    handleMouseLeave(){
+        dispatch(ActionCreators.mouseLeave());
+
+    },
+    switchSearchListData(page,totalPage){
+       if (page < totalPage) {
+          dispatch(ActionCreators.changePage(page+1))
+       }else{
+            dispatch(ActionCreators.changePage(1))
+        }
+
+    },
+
+
 }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Header);

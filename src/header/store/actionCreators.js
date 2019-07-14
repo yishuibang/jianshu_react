@@ -7,16 +7,27 @@ export const searchFocused = ()=>({
 export const searchBlur = ()=>({
     type:ActionTypes.SEARCH_BLUR
 });
-export const hotSearchList = (data)=>({
+export const mouseEnter =()=>({
+    type:ActionTypes.MOUSE_ENTER
+});
+export const mouseLeave =()=>({
+    type:ActionTypes.MOUSE_LEAVE 
+});
+export const changePage =(page)=>({
+    type:ActionTypes.CHANGE_PAGE,
+    page
+});
+
+
+// 私有方法不用导出
+ const hotSearchList = (data)=>({
     type:ActionTypes.HOTSEARCH_LIST,
-    data:data 
+    data:data ,
+    totalPage: Math.ceil(data.length / 10)
 });
 export const getHotSearchList = ()=>{
    return (dispatch)=>{axios.get('/api/hotSearchList.json')
     .then((res)=>{
-        // if(!res){return}
-        console.log('kkkkk',res.data)
-        console.log('jjjjj',  hotSearchList(res.data))
         dispatch(hotSearchList(res.data))
     })
     .catch(()=>{
