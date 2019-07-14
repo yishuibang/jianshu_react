@@ -41,7 +41,8 @@ class Header extends Component {
                              {/*头部 热门搜索 换一换 */}
                                 <HotSearchHeader>
                                     热门搜索
-                                    <SearchSwitch onClick={()=>switchSearchListData(page,totalPage)}>
+                                    <SearchSwitch onClick={()=>switchSearchListData(page,totalPage,this.spinIcon)}>
+                                        <i ref={(icon) => {this.spinIcon = icon}} className = 'iconfont switchIcon'>&#xe6c9;</i>
                                         换一换
                                     </SearchSwitch>
                                     {/* 热门搜索列表 */}
@@ -57,7 +58,7 @@ class Header extends Component {
           null
      }
     render(){
-        const {focused,onsearchFocus,onsearchBlur} = this.props;
+        const {focused,hotSearchList,onsearchFocus,onsearchBlur} = this.props;
         return(<HeaderWrapper>
             <NavLogl  />
             <NaviMiddle >
@@ -75,7 +76,7 @@ class Header extends Component {
                     >
                             <NavSearch
                         className = {focused ? 'focused' : ''}
-                        onFocus = {onsearchFocus}
+                        onFocus = {()=>onsearchFocus(hotSearchList)}
                         onBlur = {onsearchBlur}
                         />
                     </CSSTransition>
@@ -111,9 +112,9 @@ const mapStateToProps= (state)=>{
 }
 const mapDispatchToProps = (dispatch)=>{
 return {
-    onsearchFocus(){
+    onsearchFocus(list){
         // 获取热门搜索的数据
-        dispatch(ActionCreators.getHotSearchList())
+       list.size === 0 && dispatch(ActionCreators.getHotSearchList())
         dispatch(ActionCreators.searchFocused());
     },
     onsearchBlur(){
@@ -128,7 +129,15 @@ return {
         dispatch(ActionCreators.mouseLeave());
 
     },
-    switchSearchListData(page,totalPage){
+    switchSearchListData(page,totalPage,spin){
+        let originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
+        if (originAngle) {
+            originAngle = parseInt(originAngle, 10);
+        }else {
+            originAngle = 0;
+        }
+        spin.style.transform = 'rotate(' + (originAngle + 360) + 'deg)';
+
        if (page < totalPage) {
           dispatch(ActionCreators.changePage(page+1))
        }else{

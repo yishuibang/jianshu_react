@@ -126,6 +126,17 @@ export const HotSearchHeader = styled.div`
 export const SearchSwitch = styled.a`
    float:right;
    font-size:13px;
+   cursor: pointer;
+
+   .switchIcon{
+      display: block;
+       float:left;
+       margin-right:5px;
+       font-size:14px;
+       transition: all .2s ease-in;
+       transform-origin: center center;
+
+   }
 `
 export const HotSearchListItem = styled.a`
   display:inline-block;
