@@ -9,7 +9,7 @@ const defaultState = fromJS({
     totalPage:1,
 });
 export default (state = defaultState , action)=>{
-    if(action.type){
+ 
         switch (action.type) {
         case ActionTypes.SEARCH_FOCUSED:
             return state.set('focused',true)
@@ -37,7 +37,5 @@ export default (state = defaultState , action)=>{
             return state
             break;
     }
-
-}
     
 }
