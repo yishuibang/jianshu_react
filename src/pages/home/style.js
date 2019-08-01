@@ -9,17 +9,18 @@ export const Container = styled.div`
 export const Left = styled.div`
     float:left;
     width:625px;
-    margin-top:15px;
-    .banner-img{
+    margin-top:30px;
+    .banner-img {
         width:625px;
         height:270px;
     }
 
 `
 export const TopicWrapper = styled.div`
+  overflow:hidden;
   margin-top:15px;
   margin-right:18px;
-
+  border-bottom:1px solid #eee;
 
 `
 export const TopicItem = styled.div`
@@ -45,9 +46,52 @@ export const TopicItem = styled.div`
     }
 
 `
-export const Right = styled.div`
+export const ArticleWrapper = styled.div`
+margin-top:20px;
+
+`
+export const ListItem = styled.div`
+padding-top:15px;
+padding-bottom:15px;
+overflow:hidden;
+border-bottom:1px solid #eee;
+
+.pic{
+    width: 125px;
+    height: 100px;
+    border-radius:4px;
     float:right;
-    width:240px;
+    
+}
+.title{
+    font-size:18px;
+    font-weight:bold;
+    color:#333;
+    line-height:30px;
+}
+.desc{
+    margin-top:10px;
+    font-size:14px;
+    color:#777;
+    line-height:27px;
+}
+
+`
+export const Right = styled.div`
+   margin-top:30px;
+    float:right;
+    width:280px;
    
 
+`
+export const RightHeaderContainer = styled.ul`
+
+
+`
+export const RightHeaderItem = styled.li`
+  margin-top:10px;
+ .pic{
+    width:280px;
+    height:50px;
+ }
 `
