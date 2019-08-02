@@ -1,10 +1,11 @@
 import React, {Component}  from "react";
 import { Container,Left,Right } from "./style";
 import Topic from './components/topic';
-import articleList from './components/articleList'
 import {connect} from 'react-redux';
 import ArticleList from "./components/articleList";
-import RightHeader from './components/rightHeader'
+import RightHeader from './components/rightHeader';
+import Recommand from './components/recommand'
+
 class Home extends Component {
     render(){
         return (
@@ -16,7 +17,8 @@ class Home extends Component {
                     <ArticleList />
                 </Left>
                 <Right>
-                    <RightHeader  />
+                    <RightHeader />
+                    <Recommand /> 
                 </Right>
             </Container>
         )

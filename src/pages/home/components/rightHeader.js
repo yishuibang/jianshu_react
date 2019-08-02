@@ -10,9 +10,9 @@ class RightHeader extends Component {
                 {
                     recList.map((item)=>(
                     <RightHeaderItem key={item}>
-                    <img class = 'pic' src={item.get('imgUrl')}/>
+                    <img className = 'pic' src={item.get('imgUrl')}/>
                     </RightHeaderItem>
-                ))
+                   ))
             }
             </RightHeaderContainer>
         )

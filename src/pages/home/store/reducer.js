@@ -2,7 +2,7 @@
 import {fromJS} from 'immutable';
 
 const defaultState = fromJS({
-    topicList:[
+   topicList:[
      {
          id:1,
          title:'社会热点',
@@ -90,7 +90,28 @@ const defaultState = fromJS({
       },
    
    ],
-   });
+   recommandList:[
+      {
+         id:1,
+         imgUrl:'https://upload.jianshu.io/users/upload_avatars/4790772/388e473c-fe2f-40e0-9301-e357ae8f1b41.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+         name:'差点故事',
+         desc:'写了564.8k字 · 13.7k喜欢',
+      },
+      {
+         id:2,
+         imgUrl:'https://upload.jianshu.io/users/upload_avatars/1835526/83d24e1a-0a0f-43f6-8a1d-289be6101e73.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+         name:'行距版君',
+         desc:'写了522.9k字 · 54.4k喜欢',
+      },
+      {
+         id:3,
+         imgUrl:'https://upload.jianshu.io/users/upload_avatars/13213889/7314c5cc-ca7f-4542-b914-2c8dffaf324d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+         name:'无限猴子',
+         desc:'写了390.7k字 · 2k喜欢',
+      }
+
+   ]   
+});
 export default (state = defaultState , action)=>{
         switch (1) {
         default:

@@ -5,12 +5,11 @@ import {connect} from 'react-redux';
 class ArticleList extends Component {
     render(){
         const {articlList} = this.props
-
         return (
             <ArticleWrapper>
                { articlList.map((item)=>(
                    <ListItem key={item}>
-                   <img className = 'pic' 
+                   <img className = 'pic'  alt=''
                        src={item.get('imgUrl')}/>
    
                        <h3  className = 'title'>{item.get('title')}</h3>

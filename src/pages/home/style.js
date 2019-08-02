@@ -95,3 +95,52 @@ export const RightHeaderItem = styled.li`
     height:50px;
  }
 `
+export const RecommandContainer = styled.div`
+     margin-top:20px;
+   
+`
+export const RecommandHeader = styled.div`
+     font-size:14px;
+     color:#969696;
+     overflow:hidden;
+     margin-bottom:15px;
+     .switch{
+         float:right;
+     }
+
+`
+export const RecommandItem = styled.li`
+
+overflow:hidden;
+
+margin-top:15px;
+.pic{
+    float:left;
+    width:48px;
+    height:48px;
+    border-radius:24px;
+    border:1px solid #ccc;
+
+}
+.middle{
+  float:left;
+  margin-left:10px;
+}
+.name{
+    margin-top:10px;
+    font-size:14px;
+    color:#333;
+
+}
+.desc{
+    margin-top:10px;
+    font-size:12px;
+    color:#969696;
+}
+.focus{
+    float:right;
+    color:#42c02e;
+    font-size:14px;
+    font-weiht:bold;
+}
+`
