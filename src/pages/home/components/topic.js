@@ -7,11 +7,13 @@ class Topic extends Component {
     render(){
         return (
             <TopicWrapper>
-                {this.props.topicList.map((item)=>{
+                {this.props.topicList&&this.props.topicList.map((item)=>{
+                    
                return  <TopicItem key = {item}>
                     <img 
+                    alt = ''
                     className = 'topic-pic'
-                    src={item.get('image')}/>
+                    src={item.get('imgUrl')}/>
                     {item.get('title')}
                   </TopicItem>
                 })

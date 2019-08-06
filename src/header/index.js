@@ -1,5 +1,6 @@
 import React , {Component}from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
 import {HeaderWrapper,
     NavLogl,
@@ -60,7 +61,9 @@ class Header extends Component {
     render(){
         const {focused,hotSearchList,onsearchFocus,onsearchBlur} = this.props;
         return(<HeaderWrapper>
+            <Link to={'/'}>
             <NavLogl  />
+            </Link>
             <NaviMiddle >
                 <NavItem className='left home'> 首页</NavItem>
                 <NavItem className='left'>下载App</NavItem>

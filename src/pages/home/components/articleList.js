@@ -7,7 +7,7 @@ class ArticleList extends Component {
         const {articlList} = this.props
         return (
             <ArticleWrapper>
-               { articlList.map((item)=>(
+               { articlList&&articlList.map((item)=>(
                    <ListItem key={item}>
                    <img className = 'pic'  alt=''
                        src={item.get('imgUrl')}/>

@@ -15,7 +15,7 @@ class Recommand extends Component {
                 <ul>
                {recommandList.map((item, index)=>(
                 <RecommandItem key = {index}>
-                    <img className='pic' src={item.get('imgUrl')}/>
+                    <img className='pic' src={item.get('imgUrl')} alt = ''/>
                     <div className='middle'>
                         <a className = 'name'>{item.get('name')}</a>
                         <p className = 'desc'>{item.get('desc')}</p>
