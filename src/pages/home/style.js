@@ -144,3 +144,14 @@ margin-top:15px;
     font-weiht:bold;
 }
 `
+export  const LoadMore = styled.a`
+display:block;
+margin:30px 0;
+height:40px;
+width:100%;
+color: #fff;
+text-align: center;
+line-height:40px;
+border-radius: 20px;
+background-color: #a5a5a5;
+`

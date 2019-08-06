@@ -3,29 +3,36 @@ import axios from "axios";
 
 export const homeData =(data)=>({
     type:actionTypes.GET_HOME_DATA,
-    articlList:data.articleList,
+    // articlList:data.articleList,
     topicList: data.topicList,
     recList: data.recommendList,
 });
-
-export const getHomeData=()=>{
+const homeDataMore=(data,page)=>({
+type:actionTypes.GET_HOME_MORE,
+data:data,
+page:page
+});
+export const getHomeData=()=>{    
   return (dispatch)=>{
-       axios.get('/api/home.json')
+    axios.get('/api/home.json')
    .then((res)=>{
-    console.log('res:',res.data.data)
+    // console.log('res:',res.data.data)
     dispatch(homeData(res.data.data))
     })
    .catch((err)=>{
     console.log('err:',err)
    })
   }
- }
-//  export const getHotSearchList = ()=>{
-//     return (dispatch)=>{axios.get('/api/hotSearchList.json')
-//      .then((res)=>{
-//          dispatch(hotSearchList(res.data))
-//      })
-//      .catch(()=>{
- 
-//      })}
-//  };
+ };
+export const homeLoadMore=(page)=>{
+    return (dispatch)=>{
+        axios.get(`/api/homeList.json?page=${page}`)
+        .then((res)=>{
+        //  console.log('res:',res)
+         dispatch(homeDataMore(res.data.data,page))
+         })
+        .catch((err)=>{
+         console.log('err:',err)
+        })
+    }
+};

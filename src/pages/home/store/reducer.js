@@ -2,6 +2,7 @@
 import {fromJS} from 'immutable';
 import * as ActionTypes from './actionTypes'
 const defaultState = fromJS({
+   page:1,
    topicList:[
      {
          id:1,
@@ -39,38 +40,7 @@ const defaultState = fromJS({
         image:'http://upload.jianshu.io/admin_banners/web_images/4318/60781ff21df1d1b03f5f8459e4a1983c009175a5.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540',
      },
     ],
-   articlList:[
-      {
-         id:1,
-         title:'陈果的魅力',
-         desc:'xy： 又看到陈果的消息，热衷！ 听她讲课的人都说： “有内涵的没她漂亮， 漂亮的又没她有内涵。” 爱情的意义到底是什么？ 遇见TA之前， 自己...',
-         imgUrl:'https://upload-images.jianshu.io/upload_images/14386767-96621e758954db84.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-
-      },
-      {
-         id:2,
-         title:'陈果的魅力',
-         desc:'xy： 又看到陈果的消息，热衷！ 听她讲课的人都说： “有内涵的没她漂亮， 漂亮的又没她有内涵。” 爱情的意义到底是什么？ 遇见TA之前， 自己...',
-         imgUrl:'https://upload-images.jianshu.io/upload_images/14386767-96621e758954db84.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-
-      },
-      {
-         id:3,
-         title:'陈果的魅力',
-         desc:'xy： 又看到陈果的消息，热衷！ 听她讲课的人都说： “有内涵的没她漂亮， 漂亮的又没她有内涵。” 爱情的意义到底是什么？ 遇见TA之前， 自己...',
-         imgUrl:'https://upload-images.jianshu.io/upload_images/14386767-96621e758954db84.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-
-      },
-      {
-         id:4,
-         title:'陈果的魅力',
-         desc:'xy： 又看到陈果的消息，热衷！ 听她讲课的人都说： “有内涵的没她漂亮， 漂亮的又没她有内涵。” 爱情的意义到底是什么？ 遇见TA之前， 自己...',
-         imgUrl:'https://upload-images.jianshu.io/upload_images/14386767-96621e758954db84.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-
-      },
-
-   
-   ],
+   articlList:[],
    recList:[
       {
          id:1,
@@ -113,13 +83,19 @@ const defaultState = fromJS({
    ]   
 });
 export default (state = defaultState , action)=>{
+   
         switch (action.type) {
-           case ActionTypes.GET_HOME_DATA:              
+           case ActionTypes.GET_HOME_DATA: 
                return state.merge({
-                  articlList: fromJS(action.articlList),
+                  // articlList: fromJS(action.articlList),
                   topicList: fromJS(action.topicList),
                   recList: fromJS(action.recList)
               });  
+            case ActionTypes.GET_HOME_MORE:
+               return state.merge({
+               articlList:state.get('articlList').concat(fromJS(action.data)),
+               page:action.page + 1
+               });
         default:
             return state
 
