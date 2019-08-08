@@ -3,6 +3,7 @@ import {fromJS} from 'immutable';
 import * as ActionTypes from './actionTypes'
 const defaultState = fromJS({
    page:1,
+   showScroll:false,
    topicList:[
      {
          id:1,
@@ -96,6 +97,8 @@ export default (state = defaultState , action)=>{
                articlList:state.get('articlList').concat(fromJS(action.data)),
                page:action.page + 1
                });
+               case ActionTypes.TOGGLE_SCROLL_TOP:
+			return state.set('showScroll', action.show);
         default:
             return state
 

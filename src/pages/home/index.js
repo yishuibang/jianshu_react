@@ -1,5 +1,5 @@
 import React, {Component}  from "react";
-import { Container,Left,Right } from "./style";
+import { Container,Left,Right,BackTop } from "./style";
 import Topic from './components/topic';
 import {connect} from 'react-redux';
 import ArticleList from "./components/articleList";
@@ -20,16 +20,31 @@ class Home extends Component {
                     <RightHeader />
                     <Recommand /> 
                 </Right>
+               {this.props.showScroll ?  <BackTop onClick={this.handleScrollTop}></BackTop> : null}
             </Container>
         )
     }
+    handleScrollTop = ()=>{
+        window.scrollTo(0, 0);
+
+    }
     componentDidMount(){
         this.props.getHomeData()
+        this.bindEvents();
+
+    }
+    bindEvents() {
+		window.addEventListener('scroll', this.props.changeScrollTopShow);
+    }
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.props.changeScrollTopShow);
+
     }
 }
 const mapStateToProps= (state)=>{
 return {
-  
+    showScroll: state.getIn(['home', 'showScroll'])
+
 }
 }
 const mapDispatchToProps = (dispatch)=>{
@@ -37,6 +52,14 @@ const mapDispatchToProps = (dispatch)=>{
         getHomeData(){
             dispatch(ActionCreators.getHomeData())
         },
+        changeScrollTopShow() {
+            // console.log(document.documentElement.scrollTop)
+            if (document.documentElement.scrollTop > 100) {
+                dispatch(ActionCreators.toggleTopShow(true))
+            }else {
+                dispatch(ActionCreators.toggleTopShow(false))
+            }
+        }
     }
 }
 
