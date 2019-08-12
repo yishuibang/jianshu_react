@@ -83,22 +83,29 @@ const defaultState = fromJS({
 
    ]   
 });
+
+const getHomeGData = (state,action)=>{
+  return state.merge({
+      // articlList: fromJS(action.articlList),
+      topicList: fromJS(action.topicList),
+      recList: fromJS(action.recList)
+  });  
+}
+const homeArticleList = (state,action)=>{
+  return state.merge({
+      articlList:state.get('articlList').concat(fromJS(action.data)),
+      page:action.page + 1
+      });
+}
 export default (state = defaultState , action)=>{
    
         switch (action.type) {
            case ActionTypes.GET_HOME_DATA: 
-               return state.merge({
-                  // articlList: fromJS(action.articlList),
-                  topicList: fromJS(action.topicList),
-                  recList: fromJS(action.recList)
-              });  
-            case ActionTypes.GET_HOME_MORE:
-               return state.merge({
-               articlList:state.get('articlList').concat(fromJS(action.data)),
-               page:action.page + 1
-               });
-               case ActionTypes.TOGGLE_SCROLL_TOP:
-			return state.set('showScroll', action.show);
+               return getHomeGData(state,action)
+           case ActionTypes.GET_HOME_MORE:
+               return homeArticleList(state,action)
+           case ActionTypes.TOGGLE_SCROLL_TOP:
+			      return state.set('showScroll', action.show);
         default:
             return state
 

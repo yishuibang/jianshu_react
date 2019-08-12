@@ -65,7 +65,10 @@ class Header extends Component {
             <NavLogl  />
             </Link>
             <NaviMiddle >
+                <Link to ={'/'}>
                 <NavItem className='left home'> 首页</NavItem>
+                </Link>
+                
                 <NavItem className='left'>下载App</NavItem>
                 <NavItem className= 'right'>
                     <i className="iconfont langua">&#xe636;</i>
