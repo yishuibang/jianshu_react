@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as ActionTypes from './actionTypes'
 const changeDetail = (data) => ({
-	type:ActionTypes.GET_HomeDATA,
+	type:ActionTypes.GET_DETAIL_DATA,
 	data
 });
 

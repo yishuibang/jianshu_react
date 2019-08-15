@@ -22,8 +22,8 @@ class Deatil extends Component {
 
 const mapStateToProps= (state)=>{
     return {
-        data: state.getIn(['detail', 'data'])
-    
+        data: state.getIn(['detail', 'data']),
+
     }
     }
     const mapDispatchToProps = (dispatch)=>{
