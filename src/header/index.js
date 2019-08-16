@@ -18,6 +18,7 @@ import {HeaderWrapper,
 } from './style'
 import {connect} from 'react-redux';
 import {ActionCreators} from './store';
+import {logout} from '../pages/login/store/actionCreators'
 import {fromJS} from 'immutable';
 class Header extends Component {
      renderHotSearchList() {
@@ -61,7 +62,7 @@ class Header extends Component {
     render(){
         console.log('login:', this.props.login);
         
-        const {focused,hotSearchList,onsearchFocus,onsearchBlur,login} = this.props;
+        const {focused,hotSearchList,onsearchFocus,onsearchBlur,login, logout} = this.props;
         return(<HeaderWrapper>
             <Link to={'/'}>
             <NavLogl  />
@@ -76,7 +77,7 @@ class Header extends Component {
                     <i className="iconfont langua">&#xe636;</i>
                 </NavItem>
                 {login ? 
-                   <NavItem className = 'right'>退出</NavItem>
+                   <NavItem onClick = {logout} className = 'right'>退出</NavItem>
                    :
                <Link to = {'/login'}>
                 <NavItem className = 'right'>登录</NavItem>
@@ -163,7 +164,9 @@ return {
 
     },
 
-
+    logout(){
+        dispatch(logout())
+    }
 }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Header);
