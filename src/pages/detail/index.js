@@ -1,6 +1,7 @@
 import React, {Component}  from "react";
 import {DetailWrapper,Header,Content} from './style'
 import {connect} from 'react-redux'
+import { withRouter } from 'react-router-dom';
 import { ActionCreators } from "./store";
 class Deatil extends Component {
     render(){        
@@ -34,4 +35,4 @@ const mapStateToProps= (state)=>{
         }
     }
     
-    export default connect(mapStateToProps,mapDispatchToProps)(Deatil);
+    export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Deatil));
